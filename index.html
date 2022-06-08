@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Music Player</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <audio id="audio" src="music.mp3"></audio>
+        <video id="video" src="video.mp4"></video>
+        <div id="main">
+            <div onclick="playPause()"> 
+                <i id="play-pause" class="fa-solid fa-play fa-2x"></i>
+            </div>
+            <div onclick="mute()">
+                <i id="mute-icon" class="fa-solid fa-volume-high fa-2x"></i>
+            </div>
+            <progress id="seekbar" value="0" max="1" style="width:400px;"></progress>
+        </div>
+        <script>
+            function playPause() {
+                var audio = document.getElementById("audio");
+                var video = document.getElementById("video");
+                var playPause = document.getElementById("play-pause");
+
+                if (audio.paused) {
+                    audio.play();
+                    video.play();
+                    playPause.setAttribute("class","fa-solid fa-pause fa-2x");
+                }
+                else {
+                    audio.pause();
+                    video.pause();
+                    playPause.setAttribute("class","fa-solid fa-play fa-2x");
+                }
+            }
+            function mute() {
+                var audio = document.getElementById("audio");
+                var muteIcon = document.getElementById("mute-icon");
+                if (!audio.muted) {
+                    audio.muted=true;
+                    muteIcon.setAttribute("class","fa-solid fa-volume-xmark fa-2x");
+                }
+                else {
+                    audio.muted=false;
+                    muteIcon.setAttribute("class","fa-solid fa-volume-high fa-2x");
+                }
+            }
+            function updateProgress() {
+                var audio = document.getElementById("audio");
+                var progress = document.getElementById("seekbar");
+                progress.setAttribute("value", audio.currentTime / audio.duration);
+            }
+            var audio = document.getElementById("audio");
+            audio.addEventListener("timeupdate", updateProgress);
+        </script>
+    </body>
+</html>

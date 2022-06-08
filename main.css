@@ -1,0 +1,26 @@
+#video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100;
+}
+#main {
+    display: flex;
+    align-items: center;
+    background-color: rgba(212, 212, 212, 0.517);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#seekbar {
+    display: flex;
+    flex-grow: 1;
+}
